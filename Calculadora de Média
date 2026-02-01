@@ -1,0 +1,73 @@
+import tkinter as tk
+from tkinter import messagebox as mb
+
+
+# Funçao que calcula a média de um aluno
+def calcular_media():
+    try:
+        # Salva os valores em suas variaveis
+        n1 = float(entrada1.get())
+        n2 = float(entrada2.get())
+        n3 = float(entrada3.get())
+        n4 = float(entrada4.get())
+
+        # faz o cálculo da média
+        media = (n1 + n2 + n3 + n4) / 4
+
+        # Imprime na tela a nota e se foi aprovado ou reprovado
+        if media >= 5.0:
+            resultado = "Aprovado "
+        else:
+            resultado = "Reprovado "
+
+        # mostra o resultado na tela
+        label_resultado.config(
+            text=f"Média: {media:.2f}\n{resultado}"
+        )
+
+    except:
+        mb.showerror("Erro", "Digite apenas números!")
+
+
+# Cria a janela 
+janela = tk.Tk()
+janela.title("Calculadora de Média")
+janela.geometry("600x600")
+
+
+# Titulo da pagina
+titulo = tk.Label(janela, text="Calculadora de Média", font=("Arial", 14))
+titulo.pack(pady=10)
+
+
+# Pede para o usuario digitar os valores
+tk.Label(janela, text="Nota 1").pack()
+entrada1 = tk.Entry(janela)
+entrada1.pack()
+
+tk.Label(janela, text="Nota 2").pack()
+entrada2 = tk.Entry(janela)
+entrada2.pack()
+
+tk.Label(janela, text="Nota 3").pack()
+entrada3 = tk.Entry(janela)
+entrada3.pack()
+
+tk.Label(janela, text="Nota 4").pack()
+entrada4 = tk.Entry(janela)
+entrada4.pack()
+
+
+
+# Cria um botao
+botao = tk.Button(janela, text="Calcular Média", command=calcular_media)
+botao.pack(pady=10)
+
+
+# Resultado da Nota
+label_resultado = tk.Label(janela, text="")
+label_resultado.pack()
+
+
+# Faz a janela rodar
+janela.mainloop()
